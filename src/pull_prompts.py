@@ -21,7 +21,8 @@ from utils import check_env_vars, print_section_header, save_yaml
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PROMPTS_DIR = PROJECT_ROOT / "prompts"
+PROMPTS_DIR = PROJECT_ROOT / "prompts/bug_to_user_story"
+PROMPT_TEMPLATE  = "leonanluppi/bug_to_user_story_v1"
 
 
 def extract_template_content(message_template: Any) -> str:
@@ -128,7 +129,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "prompt_identifier",
         nargs="?",
-        default="leonanluppi/bug_to_user_story_v1",
+        default=PROMPT_TEMPLATE,
         help="Identificador do prompt no LangSmith, ex.: owner/nome_do_prompt",
     )
     parser.add_argument(
